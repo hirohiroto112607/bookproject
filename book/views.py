@@ -6,7 +6,6 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect
 from django.urls import reverse,reverse_lazy
 from django.views.generic import ListView,DetailView,CreateView,DeleteView,UpdateView
-##from django.contrib.auth import logout
 from .models import Book , Review
 from .consts import ITEMS_PER_PAGE
 from django.db.models import Avg
@@ -29,7 +28,6 @@ class CreateBookView(LoginRequiredMixin,CreateView):
   def from_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
-
 
 class DeleteBookView(LoginRequiredMixin,DeleteView):
   template_name = "book/book_delete.html"
@@ -78,8 +76,3 @@ class CreateReviewView(LoginRequiredMixin,CreateView):
   
   def get_success_url(self):
     return reverse('detail-book', kwargs={'pk': self.object.book_id})
-
-
-# def logout_view(request):
-#   logout(request)
-#   return redirect("index")

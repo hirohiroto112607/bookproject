@@ -1,5 +1,6 @@
 from django.db import models
 from .consts import MAX_RATE
+
 RATE_CHOICES = {(x,str(x)) for x in range(0,MAX_RATE+1)}
 
 class Book(models.Model):
