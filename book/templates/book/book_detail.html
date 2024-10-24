@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }}{% endblock title %}
+{% block h1 %}書籍詳細{% endblock h1 %}
+
+{% block content %}
+<div class="p-4 m-4 bg-light border border-success rounded">
+  <h2 class="text-success">{{ object.title }}</h2>
+  <h6 class="card-title">{{ object.category }}</h6>
+  <p>{{ object.text }}</p>
+  <a href="{% url 'review-book' object.pk %}" class="btn btn-primary">レビューを書く</a>
+  <a href="{% url 'list-book' %}" class="btn btn-primary">一覧</a>
+  <a href="{% url 'delete-book' object.pk %}" class="btn btn-primary">削除</a>
+  <a href="{% url 'update-book' object.pk %}" class="btn btn-primary">更新</a>
+</div>
+{% endblock content %}
